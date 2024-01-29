@@ -22,6 +22,7 @@ export default function modalLogin(board, URL) {
       const response = await api.send(formData);
 
       if (response.status === 204 && response.ok) {
+        console.log(response)
         form.reset();
         form.remove();
 

@@ -24,20 +24,20 @@ export default class Chat {
     this.form = container.querySelector('.chatForm');
     this.input = container.querySelector('input');
 
-    this.ws = new WebSocket('ws://localhost:7070/ws');}
+    this.ws = new WebSocket('wss://chatbackend-7ip8.onrender.com/');}
 
   async init() {
     this.ws.addEventListener('open', () => {
       console.log('connected');
-
       this.ws.send('hello');
     });
 
     this.ws.addEventListener('message', (evt) => {
-      [this.users, this.messages] = JSON.parse(evt.data);
-
-      this.getUsers(this.users);
-      this.getMessages(this.messages);
+      if(evt.data !== 'connected' && evt.data !== 'response'){
+        [this.users, this.messages] = JSON.parse(evt.data);
+        this.getUsers(this.users);
+        this.getMessages(this.messages);
+      }
     });
 
     this.ws.addEventListener('close', async (evt) => {
@@ -95,7 +95,7 @@ export default class Chat {
       date: getTime(),
     };
 
-    const api = new API('http://localhost:7070/message');
+    const api = new API('https://chatbackend-7ip8.onrender.com/message');
     const response = await api.send(message);
     if (response.status === 200 && response.ok) {
       this.input.value = '';
