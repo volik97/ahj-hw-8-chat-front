@@ -1,7 +1,5 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/a5gnato326j77s7w?svg=true)](https://ci.appveyor.com/project/a-naraikin/n-ahj-hw-8-sse-ws-chat-frontend)
 
-## [веб-сайт](https://a-naraikin.github.io/n-ahj-hw.-8_sse-ws_chat_frontend/)
-
 ## Домашняя работа «EventSource, Websockets: Chat»
 
 Правила сдачи задания:

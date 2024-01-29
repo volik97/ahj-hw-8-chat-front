@@ -24,7 +24,8 @@ export default class Chat {
     this.form = container.querySelector('.chatForm');
     this.input = container.querySelector('input');
 
-    this.ws = new WebSocket('wss://chatbackend-7ip8.onrender.com/');}
+    this.ws = new WebSocket('wss://chatbackend-7ip8.onrender.com/');
+  }
 
   async init() {
     this.ws.addEventListener('open', () => {
@@ -33,7 +34,7 @@ export default class Chat {
     });
 
     this.ws.addEventListener('message', (evt) => {
-      if(evt.data !== 'connected' && evt.data !== 'response'){
+      if (evt.data !== 'connected' && evt.data !== 'response') {
         [this.users, this.messages] = JSON.parse(evt.data);
         this.getUsers(this.users);
         this.getMessages(this.messages);
